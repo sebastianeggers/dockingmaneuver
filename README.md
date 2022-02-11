@@ -19,7 +19,7 @@ You should now see the create-react-app default page: A bright blue atom, slowly
 
 If it worked as expected, stop the server using `ctrl+c`.
 
-### Task 1
+### Task 1.1
 
 **Objective:** When you have finished, you should be able to build and run the application using the following commands:
 ```
@@ -35,7 +35,7 @@ Tips:
 - Find out what is the difference between COPY and ADD ([[1]](https://nickjanetakis.com/blog/docker-tip-2-the-difference-between-copy-and-add-in-a-dockerile), [[2]](https://stackoverflow.com/questions/24958140/what-is-the-difference-between-the-copy-and-add-commands-in-a-dockerfile?rq=1)), and between RUN and CMD ([[1]](https://nickjanetakis.com/blog/docker-tip-7-the-difference-between-run-and-cmd)).
 - Find out how to build efficient Dockefiles for nodejs applications ([[1]](https://bitjudo.com/blog/2014/03/13/building-efficient-dockerfiles-node-dot-js/))
 
-### Task 2
+### Task 1.2
 
 Using docker to run your application is nice, but handling the containers manually gets tedious when your software consists of more containers.
 
@@ -50,3 +50,29 @@ To achieve this, you will need to edit the file `docker-compose.yml`.
 Tips:
 - Read the [Overview of Docker Compose](https://docs.docker.com/compose/)
 - `volumes` is useful to enable hot-realoading.
+
+## Lesson 2 - Communication between frontend and backend in Docker
+
+For this lesson, you are provided with two changes:
+
+First, in addition to the frontend there is now also a directory for backend, containing a minimal backend implemented in GoLang.
+
+Second, the frontend app now contains a button that will try to fetch and display a random color from the backend.
+
+### Task 2.1
+
+**Objective:** Adjust the `docker-compose.yml` file so that the backend is available on port 8080. 
+
+You will not need to provide a command this time, it is already provided in the Dockerfile.
+
+The Dockerfile is already provided for you this time.
+
+After you are finished, run `docker compose up` and navigate to http://localhost:8080/colour in your browser. If all went well, you should see the name of a random colour.
+
+### Task 2.2
+
+**Objective:** If you open the frontend and click the button, you will not yet be able to load the colour from the backend. Your task is to make the backend available in the frontend.
+
+To achieve this, add a `proxy` entry to the `package.json` file in the frontend directory.
+
+It is your task to find out what to put there. If you are unsure, make yourself clear that the name that is given to containers in the docker-compose.yml file are used as names for the containers.

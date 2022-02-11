@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  backend:
+    # TODO: Your code goes here
+  frontend:
+    build:
+      context: .
+      dockerfile: .docker/frontend/Dockerfile
+    command: npm run start
+    volumes:
+      - ./frontend:/var/app
+    ports:
+      - 3000:3000
